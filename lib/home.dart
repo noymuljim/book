@@ -1,6 +1,6 @@
-import 'package:book/book%20details.dart';
-import 'package:book/bookType.dart';
-import 'package:book/story.dart';
+import 'package:book_app/bookDetails.dart';
+import 'package:book_app/bookType.dart';
+import 'package:book_app/story.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

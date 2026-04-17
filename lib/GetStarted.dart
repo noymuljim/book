@@ -11,7 +11,7 @@ class Getstarted extends StatelessWidget{
           Expanded(
             flex: 1,
             child: Container(
-              child: Image.asset('assets/images/logoo2.png'),
+              child: Image.asset('assets/images/logo2.png'),
             ),
           ),
           Expanded(
