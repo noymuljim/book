@@ -1,119 +1,111 @@
 import 'package:flutter/material.dart';
 
-class category extends StatelessWidget{
+class category extends StatelessWidget {
+
+  final List<Map<String, String>> categories = [
+    {
+      "image": "assets/images/b3.jpeg",
+      "title": "Fiction",
+      "subtitle": "Story based books"
+    },
+    {
+      "image": "assets/images/b4.jpeg",
+      "title": "Crime",
+      "subtitle": "Mystery & thriller"
+    },
+    {
+      "image": "assets/images/b2.jpeg",
+      "title": "Fantasy",
+      "subtitle": "Magic & adventure"
+    },
+    {
+      "image": "assets/images/b1.jpg",
+      "title": "Drama",
+      "subtitle": "Emotional stories"
+    },
+    {
+      "image": "assets/images/b1.jpg",
+      "title": "Horror",
+      "subtitle": "Scary stories"
+    },
+    {
+      "image": "assets/images/b2.jpeg",
+      "title": "Language",
+      "subtitle": "Learn languages"
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: AppBar(title: Text("Book category",style: TextStyle(color: Colors.white)),),
+      appBar: AppBar(
+        title: Text("Book category",
+            style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.brown,
+      ),
+
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  decoration:  BoxDecoration(
-                      color: Colors.brown.shade500,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  height: 150,width: 165 ,
-                  child:Column( mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/category.png"),
-                      ),
-                      Text("Fiction",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 26),)
-                    ],
-                  ) ,
-                ),
+        padding: const EdgeInsets.all(10.0),
 
-            SizedBox(width: 10,),
+        /// 🔲 GRID VIEW
+        child: GridView.builder(
+          itemCount: categories.length,
 
-                Container(
-                  decoration:  BoxDecoration(
-                      color: Colors.brown.shade500,
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  height: 150,width: 165 ,
-                  child:Column( mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/category.png"),
-                      ),
-                      Text("Crime",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 26),)
-                    ],
-                  ) ,
-                ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.8, // 👈 controls height/width ratio
+          ),
 
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.brown.shade500,
+                borderRadius: BorderRadius.circular(12),
+              ),
 
-              ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
 
-
-            ),
-
-
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0,right: 10.0),
-                  child: Container(
-                    decoration:  BoxDecoration(
-                        color: Colors.brown.shade500,
-                        borderRadius: BorderRadius.circular(12)
+                  /// 📸 IMAGE (FIXED - NO CROP)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      categories[index]["image"]!,
+                      height: 80,
+                      fit: BoxFit.contain, // 👈 KEY FIX
                     ),
-                    height: 150,width: 165 ,
-                    child:Column( mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset("assets/images/category.png"),
-                        ),
-                        Text("Fantacy",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 26),)
-                      ],
-                    ) ,
                   ),
-                ),
 
-
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 7.0),
-                  child: Container(
-                    decoration:  BoxDecoration(
-                        color: Colors.brown.shade500,
-                        borderRadius: BorderRadius.circular(12)
+                  /// 📚 TITLE
+                  Text(
+                    categories[index]["title"]!,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20,
                     ),
-                    height: 150,width: 165 ,
-                    child:Column( mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset("assets/images/category.png"),
-                        ),
-                        Text("Drama",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 26),)
-                      ],
-                    ) ,
                   ),
-                ),
 
+                  SizedBox(height: 5),
 
-
-              ],
-            ),
-
-
-
-          ],
-
-
+                  /// 📝 SUBTITLE
+                  Text(
+                    categories[index]["subtitle"]!,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 12,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            );
+          },
         ),
-      )
-
-
+      ),
     );
-
   }
-
 }

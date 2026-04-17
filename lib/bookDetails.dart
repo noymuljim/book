@@ -20,17 +20,36 @@ class bookdetails extends StatelessWidget{
             child: Container(
               height: 200,
               width: 200,
-              child: Image.asset("assets/images/podda.jpg"),
+              child: Image.asset("assets/images/b1.jpg"),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text("পদ্মানদীর মাঝি ঔপন্যাসিক মানিক বন্দ্যোপাধ্যায় রচিত একটি উপন্যাস। প্রকাশকালের আনুমানিক হিসাবে পুতুলনাচের ইতিকথাকে তৃতীয় উপন্যাস ধরলে পদ্মানদীর মাঝি মানিক বন্দ্যোপাধ্যায়ের চতুর্থ উপন্যাস।[১] উপন্যাসটি ১৯৩৪ সাল থেকে পূর্বাশা পত্রিকায় ধারাবাহিকভাবে প্রকাশিত হতে থাকে এবং ১৯৩৬ সালে গ্রন্থাকারে প্রকাশিত হয়।"
-                "উপন্যাসটি কলকাতা থেকে সঞ্জয় ভট্টাচার্য সম্পাদিত পূর্বাশা মাসিক পত্রিকায় জ্যৈষ্ঠ ১৩৪১ থেকে শ্রাবণ ১৩৪২ সাল পর্যন্ত ধারাবাহিকভাবে নয় কিস্তি ছাপার পর প্রকাশ বন্ধ হয়ে যায়। এক বছর পর ১৯৩৬-এর মে মাসে গ্রন্থাকারে প্রকাশিত হয়।[১] পূর্বাশা পত্রিকায় ছাপার সময় দেবীগঞ্জ ও আমিনবাড়ির এই দুটি স্থানের নাম ছিল যথাক্রমে গোয়ালন্দ ও রাজবাড়ী।"),
-          ),
-          Text("Author: মানিক বন্দ্যোপাধ্যায়",style: TextStyle(fontSize: 25,color: Colors.black)),
-          Text("Category:উপন্যাস",style: TextStyle(fontSize: 25,color: Colors.black)),
-          Text("Rating: 4.6/5",style: TextStyle(fontSize: 25,fontWeight:FontWeight.bold,color: Colors.brown)),
+        Padding(
+  padding: const EdgeInsets.all(10.0),
+  child: Text(
+    "‘ওমর’ একটি ঐতিহাসিক গ্রন্থ যেখানে ইসলামের দ্বিতীয় খলিফা হযরত উমর (রাঃ)-এর জীবন, শাসনব্যবস্থা এবং ন্যায়পরায়ণতার কাহিনী বর্ণনা করা হয়েছে। "
+    "তিনি ইসলামের ইতিহাসে অন্যতম গুরুত্বপূর্ণ ব্যক্তিত্ব, যিনি তাঁর ন্যায়বিচার, সাহসিকতা এবং প্রশাসনিক দক্ষতার জন্য পরিচিত। "
+    "তার শাসনামলে ইসলামি সাম্রাজ্য ব্যাপকভাবে বিস্তৃত হয় এবং সমাজে ন্যায় ও শৃঙ্খলা প্রতিষ্ঠিত হয়।",
+  ),
+),
+
+Text(
+  "Author: বিভিন্ন ইতিহাসবিদ",
+  style: TextStyle(fontSize: 25, color: Colors.black),
+),
+
+Text(
+  "Category: ইতিহাস",
+  style: TextStyle(fontSize: 25, color: Colors.black),
+),
+
+Text(
+  "Rating: 4.7/5",
+  style: TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+    color: Colors.brown,
+  ),
+),
 
           Center(
             child: InkWell(

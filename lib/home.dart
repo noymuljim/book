@@ -1,277 +1,249 @@
-import 'package:book_app/bookDetails.dart';
-import 'package:book_app/bookType.dart';
-import 'package:book_app/story.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:book_app/bookDetails.dart';
 
-class home extends StatefulWidget{
+class home extends StatefulWidget {
   @override
   State<home> createState() => _homeState();
 }
 
 class _homeState extends State<home> {
-
-  final List BookType=[
-    ["This Week",true,],
-    ["This Month",false,],
-    ["This Year",false,],
-
+  final List books = [
+    {
+      "image": "assets/images/b1.jpg",
+      "title": "বাংলা উপন্যাস",
+      "author": "Author 1",
+      "price": "\$25.00"
+    },
+    {
+      "image": "assets/images/b2.jpeg",
+      "title": "Novel Book",
+      "author": "Author 2",
+      "price": "\$30.00"
+    },
+    {
+      "image": "assets/images/b3.jpeg",
+      "title": "Spring Story",
+      "author": "Author 3",
+      "price": "\$20.00"
+    },
+    {
+      "image": "assets/images/b4.jpeg",
+      "title": "Himu",
+      "author": "Humayun Ahmed",
+      "price": "\$18.00"
+    },
   ];
-
-
-  void bookTypeSelected(int index){
-
-    setState(() {
-      for(int i=0; i< BookType.length;i++){  //loop er maddhome ekta ekta kore select r  unselect hbe
-        BookType[i][1]= false;
-      }
-      BookType[index][1]=true;
-    });
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Welcome to Book world",style: TextStyle(color: Colors.white),),
-        ),
-
-        body:
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+      backgroundColor: Color(0xffF5F5F5),
+      appBar: AppBar(
+        backgroundColor: Color(0xff8B5E34),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            /// 🔍 SEARCH BAR
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-
-              child:
-
-              TextField(  /// search field create
-                decoration:InputDecoration(
+              padding: const EdgeInsets.all(16),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Happy reading",
+                  filled: true,
+                  fillColor: Colors.grey[300],
                   suffixIcon: Icon(Icons.search),
-                  hintText: 'Happy reading...',
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color:Colors.green),
-                    borderRadius: BorderRadius.circular(22),
-
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide.none,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color:Colors.brown),
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row( mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container( decoration: BoxDecoration(color: Color((0xffBEB5A9)), borderRadius: BorderRadius.circular(11)),
-                      height: 150,width: 300,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset("assets/images/podda.jpg"),
 
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text("পদ্মানদীর মাঝি",style: TextStyle(fontSize: 22,color: Colors.white),),
-                              ),
-                              Text("By Manik Bandopadhay",style: TextStyle(fontSize: 15,color: Colors.white),),
-                              SizedBox(height: 20,),
-                              InkWell(
-
-                                onTap: (){
-                                  Navigator.push(
-                                      context,MaterialPageRoute(
-                                    builder: (context)
-                                    {
-                                      return bookdetails(); },
-
-                                  )
-                                  );  },
-
-                                child:   Text("Learn More",style: TextStyle(fontSize: 22,color: Color((0xff291C0E))),),
-                                
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container( decoration: BoxDecoration(color: Color((0xffBEB5A9)), borderRadius: BorderRadius.circular(11)),
-                      height: 150,width: 300,
-            child: Row( mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset("assets/images/robi1.jpg"),
+            /// 📚 FEATURE CARD (CLICKABLE IMAGE)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                height: 140,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 131, 118, 198),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                Column( mainAxisAlignment: MainAxisAlignment.start,
+                child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("গোরা",style: TextStyle(fontSize: 22,color: Colors.white),),
+                      padding: const EdgeInsets.all(10),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => bookdetails(),
+                            ),
+                          );
+                        },
+                        child: Image.asset("assets/images/b1.jpg"),
+                      ),
                     ),
 
-                    Text("By Rabindranath Tagore",style: TextStyle(fontSize: 15,color: Colors.white),),
-                    SizedBox(height: 20,),
-                    Text("Learn More",style: TextStyle(fontSize: 22,color:  Color((0xff291C0E)),),
-                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Novel",
+                                style: TextStyle(color: Colors.white70)),
 
+                            SizedBox(height: 5),
+
+                            Text(
+                              "বাংলা উপন্যাস বই",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16),
+                            ),
+
+                            Spacer(),
+
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("\$33.00",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold)),
+
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(6)),
+                                  child: Text("12% off"),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
                   ],
-                )
+                ),
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            sectionTitle("Top Books"),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: books.length,
+                gridDelegate:
+                    SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.65,
+                ),
+                itemBuilder: (context, index) {
+                  return bookCard(books[index]);
+                },
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            sectionTitle("Latest Books"),
+            horizontalBooks(),
+
+            SizedBox(height: 20),
+
+            sectionTitle("Upcoming Books"),
+            horizontalBooks(),
+
+            SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget sectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text("see more"),
+        ],
+      ),
+    );
+  }
+
+  Widget horizontalBooks() {
+    return Container(
+      height: 230,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          return bookCard(books[index]);
+        },
+      ),
+    );
+  }
+
+  Widget bookCard(Map book) {
+    return Container(
+      width: 150,
+      margin: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Color(0xff8B5E34),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child:
+                  Image.asset(book["image"], fit: BoxFit.cover),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Classics",
+                    style: TextStyle(color: Colors.white70)),
+                Text(book["title"],
+                    style:
+                        TextStyle(color: Colors.white, fontSize: 16)),
+                Text(book["author"],
+                    style: TextStyle(
+                        color: Colors.white70, fontSize: 12)),
+                SizedBox(height: 5),
+                Text(book["price"],
+                    style:
+                        TextStyle(color: Colors.white, fontSize: 16)),
               ],
             ),
-                  
-                      
-
-                      
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-            SizedBox(height: 3,),
-
-            Container(
-              height: 50,
-              child: ListView.builder           ///builder diye upr theke data call korlam
-                (scrollDirection: Axis.horizontal,
-                itemCount: BookType.length,
-                itemBuilder: (context,index){
-                  return bookType(BookType: BookType[index][0],
-                      isSelected: BookType[index][1],
-                      onTap: (){
-                        bookTypeSelected(index);
-                      }
-                  );
-
-                },),
-            ),
-
-
-    InkWell(
-
-    onTap: (){
-    Navigator.push(
-    context,MaterialPageRoute(
-    builder: (context)
-    {
-    return story(); },
-
-    )
-    );  },
-
-
-              child: Container(width: 70,height: 70, decoration: BoxDecoration(borderRadius: BorderRadius.circular(55),color: Colors.white,
-                  border:Border.all(width: 2,color: Colors.brown) ),
-              child: Image.asset("assets/images/story.png"),
-              ),
-            ),
-            Text("Upload Your Own Story"),
-            SizedBox(height: 20,),
-
-
-            SingleChildScrollView( scrollDirection: Axis.horizontal,
-              child: Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(height: 200,width: 130,decoration: BoxDecoration(borderRadius: BorderRadius.circular(11),color: Color(0xffE1D4C2)),
-
-                    child:  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset("assets/images/robi2.jpg"),
-                    ),
-
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(height: 200,width: 130,decoration: BoxDecoration(borderRadius: BorderRadius.circular(11),color: Color(0xffE1D4C2)),
-
-                      child:  Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/bosonto.jpg"),
-                      ),
-
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(height: 200,width: 130,decoration: BoxDecoration(borderRadius: BorderRadius.circular(11),color:Color(0xffE1D4C2)),
-
-                      child:  Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/probondo.jpg"),
-                      ),
-
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(height: 200,width: 130,decoration: BoxDecoration(borderRadius: BorderRadius.circular(11),color: Color(0xffE1D4C2)),
-
-                      child:  Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/himu.jpg"),
-                      ),
-
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(height: 200,width: 130,decoration: BoxDecoration(borderRadius: BorderRadius.circular(11),color: Color(0xffE1D4C2)),
-
-                      child:  Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/robi2.jpg"),
-                      ),
-
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(height: 200,width: 130,decoration: BoxDecoration(borderRadius: BorderRadius.circular(11),color: Color(0xffE1D4C2)),
-
-                      child:  Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset("assets/images/robi1.jpg"),
-                      ),
-
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-          ],
-
-
-        ),
-
-
+          )
+        ],
+      ),
     );
   }
 }
